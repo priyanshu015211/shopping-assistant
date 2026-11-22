@@ -1,16 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
-
-function isAmazonProductUrl(urlString) {
-  try {
-    const url = new URL(urlString);
-    const host = url.hostname.replace(/^www\./, '');
-    return ['amazon.in', 'amazon.com'].includes(host);
-  } catch {
-    return false;
-  }
-}
+import { isSupportedAmazonUrl } from './utils/amazonUrl.js';
 
 function ProductImage({ src, title }) {
   const [hasError, setHasError] = useState(false);
@@ -144,7 +135,7 @@ function App() {
 
     try {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      if (!tab?.id || !isAmazonProductUrl(tab.url || '')) {
+      if (!tab?.id || !isSupportedAmazonUrl(tab.url || '')) {
         setState({
           status: 'empty',
           product: null,
