@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Shopping Assistant",
+  "version": "0.1.0",
+  "description": "Extract key information from the Amazon product page you are viewing.",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_title": "Amazon Shopping Assistant",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.in/*",
+        "https://www.amazon.com/*",
+        "https://amazon.in/*",
+        "https://amazon.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
