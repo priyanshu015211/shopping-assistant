@@ -1,0 +1,69 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e5e7eb;
+  background: #0b1120;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 360px; width: 390px; min-height: 480px; background: #0b1120; }
+button, a { font: inherit; }
+.app-shell { padding: 20px; }
+.app-header { display: flex; align-items: center; gap: 11px; padding-bottom: 18px; border-bottom: 1px solid #253047; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: #07111f; background: #67e8c0; font-size: 21px; font-weight: 900; }
+.brand-copy { flex: 1; }
+.brand-copy h1 { margin: 0; font-size: 16px; letter-spacing: -.3px; }
+.brand-copy p { margin: 3px 0 0; color: #8190a8; font-size: 9px; letter-spacing: 1.1px; font-weight: 700; }
+.phase-tag { padding: 5px 7px; border: 1px solid #315c57; border-radius: 6px; color: #7ce4c0; font-size: 9px; font-weight: 800; letter-spacing: .6px; }
+.status-line { display: flex; align-items: center; gap: 8px; margin: 17px 0; color: #a5b2c7; font-size: 11px; font-weight: 650; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #64748b; }
+.status-dot.loading { background: #fbbf24; box-shadow: 0 0 0 3px #fbbf2420; }
+.status-dot.success { background: #5ee0ad; box-shadow: 0 0 0 3px #5ee0ad20; }
+.status-dot.error { background: #fb7185; box-shadow: 0 0 0 3px #fb718520; }
+.message-panel { display: flex; min-height: 260px; flex-direction: column; align-items: center; justify-content: center; padding: 26px 18px; border: 1px solid #253047; border-radius: 14px; background: #111b2d; text-align: center; }
+.message-panel h2 { margin: 12px 0 6px; font-size: 15px; }
+.message-panel p { max-width: 270px; margin: 0; color: #9aa8bd; font-size: 12px; line-height: 1.6; }
+.message-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: #1e3042; color: #78e4c0; font-size: 20px; font-weight: 700; }
+.loader { width: 25px; height: 25px; border: 2px solid #334155; border-top-color: #67e8c0; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.primary-button { margin-top: 18px; padding: 9px 16px; border: 0; border-radius: 8px; background: #67e8c0; color: #07111f; font-size: 11px; font-weight: 800; cursor: pointer; }
+.product-heading { margin: 18px 0 14px; }
+.eyebrow, .section-title { color: #7ce4c0; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.product-heading h2 { display: -webkit-box; overflow: hidden; margin: 7px 0 0; color: #f1f5f9; font-size: 13px; line-height: 1.55; font-weight: 650; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.metric-card { min-width: 0; padding: 11px; border: 1px solid #253047; border-radius: 10px; background: #111b2d; }
+.metric-label { display: block; margin-bottom: 7px; color: #8190a8; font-size: 8px; font-weight: 800; letter-spacing: .9px; }
+.metric-card strong { display: block; overflow-wrap: anywhere; color: #f1f5f9; font-size: 11px; line-height: 1.45; font-weight: 650; }
+.detail-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 10px 2px; border-bottom: 1px solid #253047; color: #94a3b8; font-size: 10px; }
+.detail-row code { color: #dbeafe; font-size: 10px; }
+.features-section { margin-top: 16px; }
+.features-section ul { display: grid; gap: 8px; margin: 10px 0 0; padding-left: 17px; color: #c3cede; font-size: 10px; line-height: 1.55; }
+.features-section li::marker { color: #67e8c0; }
+.muted { color: #94a3b8; }
+.small { font-size: 10px; }
+.product-link { display: flex; justify-content: space-between; align-items: center; margin-top: 17px; padding: 11px 12px; border-radius: 9px; background: #67e8c0; color: #07111f; text-decoration: none; font-size: 11px; font-weight: 800; }
+.fine-print { margin: 10px 1px 0; color: #718096; font-size: 9px; line-height: 1.5; }
+.app-footer { display: flex; justify-content: center; gap: 7px; margin-top: 20px; padding-top: 13px; border-top: 1px solid #253047; color: #64748b; font-size: 8px; font-weight: 750; letter-spacing: .7px; }
+
+/* Phase 1 refinement: allow the user to expand long product titles. */
+.product-heading h2.expanded {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+.text-button {
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #7ce4c0;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
