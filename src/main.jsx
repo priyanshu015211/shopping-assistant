@@ -12,6 +12,38 @@ function isAmazonProductUrl(urlString) {
   }
 }
 
+function ProductImage({ src, title }) {
+  const [hasError, setHasError] = useState(false);
+  let safeImageUrl = '';
+
+  try {
+    const parsedUrl = new URL(src);
+    if (parsedUrl.protocol === 'https:') safeImageUrl = parsedUrl.href;
+  } catch {
+    // An unavailable or malformed image URL should not break the product popup.
+  }
+
+  if (!safeImageUrl || hasError) {
+    return (
+      <div className="product-image-placeholder" role="img" aria-label="Product image unavailable">
+        Product image unavailable
+      </div>
+    );
+  }
+
+  return (
+    <div className="product-image-panel">
+      <img
+        src={safeImageUrl}
+        alt={title}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => setHasError(true)}
+      />
+    </div>
+  );
+}
+
 function ProductDetails({ product }) {
   const [showFullTitle, setShowFullTitle] = useState(false);
 
@@ -31,6 +63,8 @@ function ProductDetails({ product }) {
           </button>
         )}
       </div>
+
+      <ProductImage src={product.image} title={product.title} />
 
       <div className="metrics-grid">
         <div className="metric-card">
