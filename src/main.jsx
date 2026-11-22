@@ -46,6 +46,19 @@ function ProductImage({ src, title }) {
 
 function ProductDetails({ product }) {
   const [showFullTitle, setShowFullTitle] = useState(false);
+  const [copyStatus, setCopyStatus] = useState('idle');
+
+  async function handleCopyAsin() {
+    try {
+      if (!navigator.clipboard?.writeText) {
+        throw new Error('Clipboard API is unavailable');
+      }
+      await navigator.clipboard.writeText(product.asin);
+      setCopyStatus('copied');
+    } catch {
+      setCopyStatus('failed');
+    }
+  }
 
   return (
     <>
@@ -87,7 +100,20 @@ function ProductDetails({ product }) {
 
       <div className="detail-row">
         <span>ASIN</span>
-        <code>{product.asin}</code>
+        <div className="asin-actions">
+          <code>{product.asin}</code>
+          <button
+            className="copy-button"
+            type="button"
+            onClick={handleCopyAsin}
+            aria-label={`Copy ASIN ${product.asin}`}
+          >
+            {copyStatus === 'copied' ? 'Copied' : copyStatus === 'failed' ? 'Retry' : 'Copy'}
+          </button>
+        </div>
+        <span className="copy-feedback" aria-live="polite">
+          {copyStatus === 'failed' ? 'Clipboard unavailable' : ''}
+        </span>
       </div>
 
       <div className="features-section">

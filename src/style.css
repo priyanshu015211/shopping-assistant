@@ -94,3 +94,30 @@ button, a { font: inherit; }
   color: #8190a8;
   font-size: 10px;
 }
+
+
+.asin-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.copy-button {
+  padding: 5px 8px;
+  border: 1px solid #315c57;
+  border-radius: 6px;
+  background: #142a2a;
+  color: #7ce4c0;
+  font-size: 9px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background: #1b3a38;
+}
+
+.copy-feedback {
+  color: #fb7185;
+  font-size: 8px;
+}
